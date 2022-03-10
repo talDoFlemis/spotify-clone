@@ -9,9 +9,6 @@
   },
   "dependencies": {
     "daisyui": "^2.6.4",
-    "husky": "^7.0.4",
-    "lint-staged": "^12.3.5",
-    "mrm": "2",
     "next": "latest",
     "next-auth": "^4.2.1",
     "nextjs-progressbar": "^0.0.14",
@@ -33,7 +30,9 @@
     "prettier-plugin-tailwindcss": "^0.1.1",
     "tailwindcss": "^3.0.7",
     "typescript": "4.5.4",
-    "husky": "^7.0.0"
+    "husky": "^7.0.0",
+    "lint-staged": "^12.3.5",
+    "mrm": "2"
   },
   "lint-staged": {
     "*.(tsx|ts|js)": "eslint --cache --fix",
