@@ -19,7 +19,7 @@ function CardMostRecentPlayed({ text, image }: Props) {
         </div>
         <p>{text}</p>
       </div>
-      <div className="mr-6 h-12 w-12 cursor-default rounded-full bg-primary p-2 shadow-md transition-all hover:scale-105">
+      <div className="mr-6 hidden h-12 w-12 cursor-default rounded-full bg-primary p-2 shadow-md transition-all hover:scale-105 md:inline-flex">
         {isPaused ? (
           <GiPauseButton
             className="h-full w-full p-1 text-black"

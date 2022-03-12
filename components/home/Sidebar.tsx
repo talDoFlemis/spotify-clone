@@ -5,19 +5,13 @@ import {
   AiFillHeart,
 } from "react-icons/ai"
 import { BiLibrary } from "react-icons/bi"
+import { RiContactsFill } from "react-icons/ri"
 import { FiRadio } from "react-icons/fi"
-import { useQuery } from "hooks/useQuery"
+import { PlaylistData } from "typings"
 
-interface Post {
-  title: string
-}
-
-function Sidebar() {
-  const { data: posts } = useQuery(
-    "https://jsonplaceholder.typicode.com/albums"
-  )
+function Sidebar({ playlists }: { playlists: PlaylistData[] }) {
   return (
-    <aside className="flex h-full w-72 flex-col items-center bg-black text-sm text-base-100">
+    <aside className="hidden h-full w-60 flex-col items-center bg-black text-sm text-base-100 sm:flex">
       <div className="w-full space-y-2 p-6">
         <div className="flex cursor-pointer items-center space-x-4  transition-colors hover:text-white">
           <AiFillHome className="h-8 w-8" /> <p>Home</p>
@@ -27,6 +21,9 @@ function Sidebar() {
         </div>
         <div className="flex cursor-pointer items-center space-x-4  transition-colors hover:text-white">
           <BiLibrary className="h-8 w-8" /> <p>Library</p>
+        </div>
+        <div className="flex cursor-pointer items-center space-x-4  transition-colors hover:text-white">
+          <RiContactsFill className="h-8 w-8" /> <p>Dev Contact</p>
         </div>
       </div>
       <div className="w-full space-y-2 p-6">
@@ -43,10 +40,15 @@ function Sidebar() {
           <p>Your episodes</p>
         </div>
       </div>
-      <div className="mb-4 h-1 w-full bg-base-100 px-6"></div>
-      <div className="w-full overflow-y-auto px-6 transition-all scrollbar scrollbar-track-transparent scrollbar-thumb-neutral hover:scrollbar-thumb-neutral-focus">
-        {posts?.map((post: Post) => (
-          <p key={post.title}>{post.title}</p>
+      <div className="mb-4 h-[0.125rem] w-full bg-base-100 px-6"></div>
+      <div className="w-full space-y-3 overflow-y-auto scroll-smooth px-6 transition-all scrollbar scrollbar-track-transparent scrollbar-thumb-neutral hover:scrollbar-thumb-neutral-focus">
+        {playlists?.map((playlist) => (
+          <p
+            key={playlist.id}
+            className="cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-white"
+          >
+            {playlist.name}
+          </p>
         ))}
       </div>
     </aside>

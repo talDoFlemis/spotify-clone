@@ -14,6 +14,7 @@ module.exports = {
       "img-cdn.hltv.org",
       "avatars.githubusercontent.com",
       "imgs.search.brave.com",
+      "i.scdn.co",
     ],
   },
 }
