@@ -29,25 +29,9 @@ Home.PageLayout = HomeLayout
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const session = await getSession(context)
-
-  // const getShows = await spotifyApi.getMySavedShows()
-  // const shows = getShows.body.items
-
-  // const getTopTracks = await spotifyApi.getMyTopTracks({
-  //   time_range: "short_term",
-  // })
-  // const topTracks = getTopTracks.body.items
-
-  // const getTopArtists = await spotifyApi.getMyTopArtists({
-  //   time_range: "short_term",
-  // })
-  // const topArtists = getTopArtists.body.items
   return {
     props: {
       session,
-      // topArtists,
-      // topTracks,
-      // shows,
     },
   }
 }

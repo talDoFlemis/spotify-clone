@@ -6,7 +6,7 @@ import SpotifyWebApi from "spotify-web-api-node"
 export const useSpotify = () => {
   const { data: session } = useSession()
   const spotifyApi = new SpotifyWebApi({
-    clientId: process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID as string,
+    clientId: process.env.SPOTIFY_CLIENT_ID as string,
     // clientSecret: process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_SECRET as string,
   })
 
