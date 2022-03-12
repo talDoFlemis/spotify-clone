@@ -8,8 +8,11 @@ import { BiLibrary } from "react-icons/bi"
 import { RiContactsFill } from "react-icons/ri"
 import { FiRadio } from "react-icons/fi"
 import { PlaylistData } from "typings"
+import { useQuery } from "hooks/useQuery"
 
-function Sidebar({ playlists }: { playlists: PlaylistData[] }) {
+function Sidebar() {
+  const { data: playlists } = useQuery<PlaylistData[]>("/api/getPlaylists")
+
   return (
     <aside className="hidden h-full w-60 flex-col items-center bg-black text-sm text-base-100 sm:flex">
       <div className="w-full space-y-2 p-6">
@@ -41,7 +44,7 @@ function Sidebar({ playlists }: { playlists: PlaylistData[] }) {
         </div>
       </div>
       <div className="mb-4 h-[0.125rem] w-full bg-base-100 px-6"></div>
-      <div className="w-full space-y-3 overflow-y-auto scroll-smooth px-6 transition-all scrollbar scrollbar-track-transparent scrollbar-thumb-neutral hover:scrollbar-thumb-neutral-focus">
+      <div className="w-60 space-y-3 overflow-y-auto scroll-smooth px-6 transition-all scrollbar scrollbar-track-transparent scrollbar-thumb-neutral hover:scrollbar-thumb-neutral-focus">
         {playlists?.map((playlist) => (
           <p
             key={playlist.id}

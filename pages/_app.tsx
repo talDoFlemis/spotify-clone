@@ -9,12 +9,9 @@ type ComponentWithPageLayout = AppProps & {
   }
 }
 
-function MyApp({
-  Component,
-  pageProps: { session, ...pageProps },
-}: ComponentWithPageLayout) {
+function MyApp({ Component, pageProps }: ComponentWithPageLayout) {
   return (
-    <SessionProvider session={session}>
+    <SessionProvider session={pageProps.session}>
       {Component.PageLayout ? (
         <Component.PageLayout>
           <NextNProgress color="#1db954" />

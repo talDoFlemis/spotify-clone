@@ -2,13 +2,15 @@ import React from "react"
 import { TopArtistsData } from "typings"
 import CardTopArtists from "./Cards/CardTopArtists"
 import cl from "clsx"
+import { useQuery } from "hooks/useQuery"
 
-function TopArtists({ topArtists }: { topArtists: TopArtistsData[] }) {
+function TopArtists() {
+  const { data: topArtists } = useQuery<TopArtistsData[]>("/api/getTopArtists")
   return (
     <div className=" p-8 text-white">
       <h1 className="mb-8 text-2xl font-bold">Your Top Artists</h1>
       <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
-        {topArtists.map((artist, index) => (
+        {topArtists?.map((artist, index) => (
           <CardTopArtists
             artistName={artist.name}
             artistGenres={artist.genres
