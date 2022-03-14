@@ -23,6 +23,6 @@
       "@tests/*": ["tests/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "lib/time.js"],
   "exclude": ["node_modules"]
 }

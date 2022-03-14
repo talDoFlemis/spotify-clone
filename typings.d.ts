@@ -30,20 +30,24 @@ declare module "next-auth" {
 }
 
 export interface PlaylistData {
-  collaborative?: boolean
-  description?: string
-  external_urls?: {
-    spotify?: string
+  collaborative: boolean
+  description: string
+  external_urls: {
+    spotify: string
   }
-  href?: string
-  id?: string
-  images?: {
+  followers: {
+    href: string
+    total: number
+  }
+  href: string
+  id: string
+  images: {
     height: number
     url: string
     width: number
   }[]
-  name?: string
-  owner?: {
+  name: string
+  owner: {
     display_name: string
     external_urls: {
       spotify: string
@@ -53,15 +57,95 @@ export interface PlaylistData {
     type: string
     uri: string
   }
-  primary_color?: string
-  public?: boolean
-  snapshot_id?: string
-  tracks?: {
+  primary_color: string
+  public: boolean
+  snapshot_id: string
+  tracks: {
     href: string
     total: number
+    items: {
+      added_at: string
+      added_by: {
+        external_urls: {
+          spotify: string
+        }
+        href: string
+        id: string
+        type: string
+        uri: string
+      }
+      is_local: boolean
+      primary_color: string
+      track: {
+        album: {
+          album_type: string
+          artists: {
+            external_urls: {
+              spotify: string
+            }
+            href: string
+            id: string
+            name: string
+            type: string
+            uri: string
+          }[]
+
+          external_urls: {
+            spotify: string
+          }
+          href: string
+          id: string
+          images: {
+            height: number
+            url: string
+            width: number
+          }[]
+          name: string
+          release_date: string
+          release_date_precision: string
+          total_tracks: number
+          type: string
+          uri: string
+        }
+        artists: {
+          external_urls: {
+            spotify: string
+          }
+          href: string
+          id: string
+          name: string
+          type: string
+          uri: string
+        }[]
+
+        disc_number: number
+        duration_ms: number
+        episode: boolean
+        explicit: boolean
+        external_ids: {
+          isrc: string
+        }
+        external_urls: {
+          spotify: string
+        }
+        href: string
+        id: string
+        is_local: boolean
+        name: string
+        popularity: number
+        preview_url: string
+        track: boolean
+        track_number: number
+        type: string
+        uri: string
+      }
+      video_thumbnail: {
+        url: string
+      }
+    }[]
   }
-  type?: string
-  uri?: string
+  type: string
+  uri: string
 }
 
 export interface ShowsData {
@@ -242,4 +326,176 @@ export interface RecentlyPlayedData {
   }
   played_at: string
   context: number
+}
+
+export interface CurrentSongInfo {
+  timestamp: number
+  context: {
+    external_urls: {
+      spotify: string
+    }
+    href: string
+    type: string
+    uri: string
+  }
+  progress_ms: number
+  item: {
+    album: {
+      album_type: string
+      artists: {
+        external_urls: {
+          spotify: string
+        }
+        href: string
+        id: string
+        name: string
+        type: string
+        uri: string
+      }[]
+      external_urls: {
+        spotify: string
+      }
+      href: string
+      id: string
+      images: {
+        height: number
+        url: string
+        width: number
+      }[]
+      name: string
+      release_date: string
+      release_date_precision: string
+      total_tracks: number
+      type: string
+      uri: string
+    }
+    artists: {
+      external_urls: {
+        spotify: string
+      }
+      href: string
+      id: string
+      name: string
+      type: string
+      uri: string
+    }[]
+
+    disc_number: number
+    duration_ms: number
+    explicit: boolean
+    external_ids: {
+      isrc: string
+    }
+    external_urls: {
+      spotify: string
+    }
+    href: string
+    id: string
+    is_local: boolean
+    name: string
+    popularity: number
+    preview_url: string
+    track_number: number
+    type: string
+    uri: string
+  }
+  currently_playing_type: string
+  actions: {
+    disallows: {
+      resuming: boolean
+    }
+  }
+  is_playing: true
+}
+
+export interface PlayerStatus {
+  device: {
+    id: string
+    is_active: boolean
+    is_private_session: boolean
+    is_restricted: boolean
+    name: string
+    type: string
+    volume_percent: number
+  }
+  shuffle_state: boolean
+  repeat_state: string
+  timestamp: number
+  context: {
+    external_urls: {
+      spotify: string
+    }
+    href: string
+    type: string
+    uri: string
+  }
+  progress_ms: number
+  item: {
+    album: {
+      album_type: string
+      artists: [
+        {
+          external_urls: {
+            spotify: string
+          }
+          href: string
+          id: string
+          name: string
+          type: string
+          uri: string
+        }
+      ]
+      external_urls: {
+        spotify: string
+      }
+      href: string
+      id: string
+      images: {
+        height: number
+        url: string
+        width: number
+      }[]
+      name: string
+      release_date: string
+      release_date_precision: string
+      total_tracks: number
+      type: string
+      uri: string
+    }
+    artists: {
+      external_urls: {
+        spotify: string
+      }
+      href: string
+      id: string
+      name: string
+      type: string
+      uri: string
+    }[]
+    disc_number: number
+    duration_ms: number
+    explicit: boolean
+    external_ids: {
+      isrc: string
+    }
+    external_urls: {
+      spotify: string
+    }
+    href: string
+    id: string
+    is_local: boolean
+    name: string
+    popularity: number
+    preview_url: string
+    track_number: number
+    type: string
+    uri: string
+  }
+  currently_playing_type: string
+  actions: {
+    disallows: {
+      resuming: boolean
+    }
+  }
+  is_playing: boolean
 }

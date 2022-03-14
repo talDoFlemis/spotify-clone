@@ -1,5 +1,6 @@
 import { signOut } from "next-auth/react"
 import Image from "next/image"
+import { useRouter } from "next/router"
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai"
 
 interface Props {
@@ -7,10 +8,14 @@ interface Props {
 }
 
 function Navbar({ username }: Props) {
+  const router = useRouter()
   return (
     <div className="mt-2 flex h-14 w-full items-center justify-between p-6">
       <div className="flex space-x-8">
-        <AiOutlineLeft className="h-9 w-9 cursor-pointer rounded-full bg-spotifyBlack/80 p-1 text-white" />
+        <AiOutlineLeft
+          className="h-9 w-9 cursor-pointer rounded-full bg-spotifyBlack/80 p-1 text-white"
+          onClick={() => router.back()}
+        />
         <AiOutlineRight className="h-9 w-9 cursor-pointer rounded-full bg-spotifyBlack/80 p-1 text-white" />
       </div>
       <button

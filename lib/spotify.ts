@@ -25,8 +25,8 @@ export const LOGIN_URL =
   "https://accounts.spotify.com/authorize?" + queryParamString.toString()
 
 export const spotifyApi = new SpotifyWebApi({
-  clientId: process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID as string,
-  clientSecret: process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_SECRET as string,
+  clientId: process.env.SPOTIFY_CLIENT_ID as string,
+  clientSecret: process.env.SPOTIFY_CLIENT_SECRET as string,
 })
 
 export default spotifyApi

@@ -15,6 +15,8 @@ module.exports = {
       "avatars.githubusercontent.com",
       "imgs.search.brave.com",
       "i.scdn.co",
+      "mosaic.scdn.co",
+      "thisis-images.scdn.co",
     ],
   },
 }

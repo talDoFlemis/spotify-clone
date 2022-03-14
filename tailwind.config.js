@@ -11,6 +11,10 @@ module.exports = {
       fontFamily: {
         spotifyFont: "Circular Std",
       },
+      // gridTemplateColumns: {
+      //   playlistSongs:
+      //     "[index] 15px [first] 4fr [var1] 2fr [last] minmax(120px,1fr)",
+      // },
     },
   },
   plugins: [require("daisyui"), require("./lib/scrollbar.js")],

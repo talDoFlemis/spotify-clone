@@ -9,25 +9,21 @@ import { RiContactsFill } from "react-icons/ri"
 import { FiRadio } from "react-icons/fi"
 import { PlaylistData } from "typings"
 import { useQuery } from "hooks/useQuery"
+import Link from "next/link"
+import LoadingComponent from "@components/layouts/LoadingComponent"
+import LinkButton from "@components/layouts/LinkButton"
 
 function Sidebar() {
-  const { data: playlists } = useQuery<PlaylistData[]>("/api/getPlaylists")
+  const { data: playlists, error } =
+    useQuery<PlaylistData[]>("/api/getPlaylists")
 
   return (
-    <aside className="hidden h-full w-60 flex-col items-center bg-black text-sm text-base-100 sm:flex">
+    <aside className="hidden h-full w-60 select-none flex-col items-center bg-black text-sm text-base-100 sm:flex">
       <div className="w-full space-y-2 p-6">
-        <div className="flex cursor-pointer items-center space-x-4  transition-colors hover:text-white">
-          <AiFillHome className="h-8 w-8" /> <p>Home</p>
-        </div>
-        <div className="flex cursor-pointer items-center space-x-4  transition-colors hover:text-white">
-          <AiOutlineSearch className="h-8 w-8" /> <p>Search</p>
-        </div>
-        <div className="flex cursor-pointer items-center space-x-4  transition-colors hover:text-white">
-          <BiLibrary className="h-8 w-8" /> <p>Library</p>
-        </div>
-        <div className="flex cursor-pointer items-center space-x-4  transition-colors hover:text-white">
-          <RiContactsFill className="h-8 w-8" /> <p>Dev Contact</p>
-        </div>
+        <LinkButton Icon={AiFillHome} text="Home" link="/" />
+        <LinkButton Icon={AiOutlineSearch} text="Search" link="/" />
+        <LinkButton Icon={BiLibrary} text="Library" link="/" />
+        <LinkButton Icon={RiContactsFill} text="Dev Contact" link="/" />
       </div>
       <div className="w-full space-y-2 p-6">
         <div className="group flex cursor-pointer items-center space-x-4  transition-all hover:text-white">
@@ -44,16 +40,19 @@ function Sidebar() {
         </div>
       </div>
       <div className="mb-4 h-[0.125rem] w-full bg-base-100 px-6"></div>
-      <div className="w-60 space-y-3 overflow-y-auto scroll-smooth px-6 transition-all scrollbar scrollbar-track-transparent scrollbar-thumb-neutral hover:scrollbar-thumb-neutral-focus">
-        {playlists?.map((playlist) => (
-          <p
-            key={playlist.id}
-            className="cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-white"
-          >
-            {playlist.name}
-          </p>
-        ))}
-      </div>
+      {!playlists && !error ? (
+        <LoadingComponent className="w-60" />
+      ) : (
+        <div className="w-60 space-y-3 overflow-y-auto scroll-smooth px-6 transition-all scrollbar scrollbar-track-transparent scrollbar-thumb-neutral hover:scrollbar-thumb-neutral-focus">
+          {playlists?.map((playlist) => (
+            <Link href={`/playlists/${playlist.id}`} key={playlist.id}>
+              <a className="block cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-white">
+                {playlist.name}
+              </a>
+            </Link>
+          ))}
+        </div>
+      )}
     </aside>
   )
 }

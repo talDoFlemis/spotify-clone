@@ -17,7 +17,7 @@ function CardMostRecentPlayed({ text, image }: Props) {
         <div className="relative h-20 w-20 ">
           <Image src={image} layout="fill" objectFit="fill" alt="gon" />
         </div>
-        <p>{text}</p>
+        <p className="w-16 truncate md:w-24  xl:w-32 ">{text}</p>
       </div>
       <div className="mr-6 hidden h-12 w-12 cursor-default rounded-full bg-primary p-2 shadow-md transition-all hover:scale-105 md:inline-flex">
         {isPaused ? (
