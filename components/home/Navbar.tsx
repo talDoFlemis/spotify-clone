@@ -23,13 +23,13 @@ function Navbar({ username, userimage }: Props) {
         />
       </div>
       <button
-        className="btn flex space-x-4 rounded-full bg-spotifyBlack/80 hover:bg-neutral/80"
+        className="space-x-4 sm:btn sm:rounded-full sm:bg-spotifyBlack/80 sm:hover:bg-neutral/80"
         onClick={() => signOut({ callbackUrl: "/auth/login" })}
       >
         <div className="relative h-8 w-8 rounded-full">
           {userimage ? (
             <Image
-              src="https://imgs.search.brave.com/6rjue0t31Ce8mJk5nzzNKDOQF3rbZlC6SkxgDh0JSmk/rs:fit:1200:1200:1/g:ce/aHR0cDovL3N0YXRp/Yy5saWJzeW4uY29t/L3AvYXNzZXRzLzcv/MS9mLzMvNzFmMzAx/NGUxNGVmMjcyMi9K/UkVpVHVuZXNJbWFn/ZTIuanBn"
+              src={userimage}
               alt="mr joe rogan"
               layout="fill"
               objectFit="cover"
@@ -45,7 +45,7 @@ function Navbar({ username, userimage }: Props) {
             />
           )}
         </div>
-        <p>{username}</p>
+        <p className="hidden sm:flex">{username}</p>
       </button>
     </div>
   )
