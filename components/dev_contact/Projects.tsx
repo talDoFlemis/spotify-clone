@@ -24,6 +24,7 @@ function Projects({ userInfo }: { userInfo: userGithubData }) {
                 alt=""
                 layout="fill"
                 objectFit="cover"
+                priority
               />
               <div className="absolute bottom-0 z-50 flex w-full items-center justify-between bg-spotifyBlack px-2 py-1">
                 <p className="text-center">{repo.name}</p>

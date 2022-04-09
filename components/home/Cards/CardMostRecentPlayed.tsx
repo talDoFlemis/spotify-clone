@@ -1,6 +1,6 @@
-import React, { useState } from "react"
-import { GiPauseButton } from "react-icons/gi"
-import { BsFillPlayFill } from "react-icons/bs"
+import React from "react"
+// import { GiPauseButton } from "react-icons/gi"
+// import { BsFillPlayFill } from "react-icons/bs"
 import Image from "next/image"
 
 interface Props {
@@ -10,7 +10,7 @@ interface Props {
 }
 
 function CardMostRecentPlayed({ text, image, className }: Props) {
-  const [isPaused, setIsPaused] = useState(true)
+  // const [isPaused, setIsPaused] = useState(true)
 
   return (
     <div
@@ -22,7 +22,7 @@ function CardMostRecentPlayed({ text, image, className }: Props) {
         </div>
         <p className="w-64 truncate sm:w-16 md:w-24  xl:w-32 ">{text}</p>
       </div>
-      <div className="mr-6 hidden h-12 w-12 cursor-default rounded-full bg-primary p-2 shadow-md transition-all hover:scale-105 md:inline-flex">
+      {/* <div className="mr-6 hidden h-12 w-12 cursor-default rounded-full bg-primary p-2 shadow-md transition-all hover:scale-105 md:inline-flex">
         {isPaused ? (
           <GiPauseButton
             className="h-full w-full p-1 text-black"
@@ -34,7 +34,7 @@ function CardMostRecentPlayed({ text, image, className }: Props) {
             onClick={() => setIsPaused(!isPaused)}
           />
         )}
-      </div>
+      </div> */}
     </div>
   )
 }

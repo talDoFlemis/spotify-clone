@@ -3,20 +3,12 @@ import { FaRandom } from "react-icons/fa"
 import { BiSkipPrevious, BiSkipNext } from "react-icons/bi"
 import { RiRepeat2Fill } from "react-icons/ri"
 import { BsFillPauseFill, BsFillPlayFill } from "react-icons/bs"
-import { useQuery } from "hooks/useQuery"
 import { PlayerStatus } from "typings"
 import cl from "clsx"
-import axios from "axios"
-import {
-  millisHoursAndMinutesAndSeconds,
-  millisHoursEtcWithoutText,
-  millisMinutesAndSeconds,
-} from "@lib/time"
+import { millisHoursEtcWithoutText } from "@lib/time"
 import { useSWRConfig } from "swr"
-import { useSession } from "next-auth/react"
 
 function Player({ playerStatus }: { playerStatus: PlayerStatus }) {
-  const { data: session } = useSession()
   const { mutate } = useSWRConfig()
 
   const [isPlayed, setIsPlayed] = useState(false)
@@ -51,18 +43,6 @@ function Player({ playerStatus }: { playerStatus: PlayerStatus }) {
               playerStatus.shuffle_state && "text-primary",
               "h-5 w-5 transition-colors hover:text-white"
             )}
-            onClick={async () => {
-              const teste = await axios.put(
-                "https://api.spotify.com/v1/me/player/shuffle",
-                null,
-                {
-                  headers: {
-                    Authorization: "Bearer " + session?.user.accessToken,
-                  },
-                }
-              )
-              console.log(teste)
-            }}
           />
           <BiSkipPrevious className="h-10 w-10 transition-colors hover:text-white" />
           {playerStatus.is_playing ? (
@@ -109,18 +89,6 @@ function Player({ playerStatus }: { playerStatus: PlayerStatus }) {
             playerStatus.shuffle_state && "text-primary",
             "h-5 w-5 transition-colors hover:text-white"
           )}
-          onClick={async () => {
-            const teste = await axios.put(
-              "https://api.spotify.com/v1/me/player/shuffle",
-              null,
-              {
-                headers: {
-                  Authorization: "Bearer " + session?.user.accessToken,
-                },
-              }
-            )
-            console.log(teste)
-          }}
         />
         <BiSkipPrevious className="h-10 w-10 transition-colors hover:text-white" />
         {playerStatus.is_playing ? (

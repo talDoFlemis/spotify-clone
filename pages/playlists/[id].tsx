@@ -7,7 +7,7 @@ import { useSession } from "next-auth/react"
 import Image from "next/image"
 import { useRouter } from "next/router"
 import React from "react"
-import { PlayerStatus, PlaylistData } from "typings"
+import { PlaylistData } from "typings"
 import { millisHoursAndMinutesAndSeconds } from "lib/time"
 import { useColor } from "color-thief-react"
 

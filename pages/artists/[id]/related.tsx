@@ -4,7 +4,6 @@ import { useSession } from "next-auth/react"
 import { useRouter } from "next/router"
 import React from "react"
 import { AlbumsData } from "typings"
-import cl from "clsx"
 import HomeLayout from "@components/layouts/HomeLayout"
 import Navbar from "@components/home/Navbar"
 
@@ -23,7 +22,7 @@ function RelatedArtists() {
       <div className="flex flex-col p-8">
         <h1 className="mb-6 text-2xl">Fans also like</h1>
         <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
-          {relatedArtists?.map((album, index) => (
+          {relatedArtists?.map((album) => (
             <FanAlsoLike
               key={album.id}
               id={album.id}

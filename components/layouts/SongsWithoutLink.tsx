@@ -1,5 +1,5 @@
 import Image from "next/image"
-import React, { useRef } from "react"
+import React from "react"
 import cl from "clsx"
 
 interface Props {
@@ -15,7 +15,6 @@ interface Props {
   artists: string | string[]
 }
 import { millisMinutesAndSeconds } from "lib/time"
-import Link from "next/link"
 import { useQuery } from "hooks/useQuery"
 import { CurrentSongInfo } from "typings"
 import AudioPlaying from "./AudioPlaying"

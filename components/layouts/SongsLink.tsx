@@ -4,7 +4,7 @@ import { millisMinutesAndSeconds } from "lib/time"
 import Link from "next/link"
 import { BsFillPlayFill } from "react-icons/bs"
 import { useQuery } from "hooks/useQuery"
-import { CurrentSongInfo, PlayerStatus } from "typings"
+import { PlayerStatus } from "typings"
 import AudioPlaying from "./AudioPlaying"
 
 interface Props {
