@@ -27,7 +27,7 @@ export default async function handler(
           }
         )
 
-        const playlists = await getPlaylists.data.items
+        const playlists = await getPlaylists.data.items.slice(0, 6)
 
         res.status(200).json(playlists)
       } catch (error) {

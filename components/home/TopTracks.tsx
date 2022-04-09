@@ -6,8 +6,11 @@ import { useQuery } from "hooks/useQuery"
 import LoadingComponent from "@components/layouts/LoadingComponent"
 
 function TopTracks() {
-  const { data: topTracks, error } =
-    useQuery<TopTracksData[]>("/api/getTopTracks")
+  const { data: topTracks, error } = useQuery<TopTracksData[]>(
+    "/api/getTopTracks",
+    0,
+    false
+  )
 
   return (
     <div className=" p-8 text-white">
@@ -18,6 +21,8 @@ function TopTracks() {
         ) : (
           topTracks?.map((track, index) => (
             <CardTopTracks
+              albumId={track.album.id}
+              songId={track.uri}
               trackName={track.name}
               key={track.id}
               artists={track.artists

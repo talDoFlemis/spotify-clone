@@ -19,3 +19,18 @@
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-base-100;
 }
+
+@layer components {
+  .shows_line {
+    @apply after:absolute after:-inset-0.5 after:mx-auto after:block after:w-[95%] after:border-t-2 after:border-neutral-focus/60 hover:after:border-t-0;
+  }
+
+  .progress_bar::-moz-progress-bar {
+    --tw-bg-opacity: 1;
+    background-color: #b3b3b3;
+  }
+  .progress_bar::-webkit-progress-value {
+    --tw-bg-opacity: 1;
+    background-color: #b3b3b3;
+  }
+}

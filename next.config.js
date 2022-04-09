@@ -17,6 +17,8 @@ module.exports = {
       "i.scdn.co",
       "mosaic.scdn.co",
       "thisis-images.scdn.co",
+      "cdn.jsdelivr.net",
+      "raw.githubusercontent.com",
     ],
   },
 }

@@ -17,7 +17,11 @@ module.exports = {
       // },
     },
   },
-  plugins: [require("daisyui"), require("./lib/scrollbar.js")],
+  plugins: [
+    require("daisyui"),
+    require("./lib/scrollbar.js"),
+    require("@tailwindcss/line-clamp"),
+  ],
   daisyui: {
     themes: [
       {

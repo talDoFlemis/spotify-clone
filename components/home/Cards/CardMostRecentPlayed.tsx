@@ -6,18 +6,21 @@ import Image from "next/image"
 interface Props {
   text: string
   image: string
+  className?: string | string[]
 }
 
-function CardMostRecentPlayed({ text, image }: Props) {
+function CardMostRecentPlayed({ text, image, className }: Props) {
   const [isPaused, setIsPaused] = useState(true)
 
   return (
-    <div className="flex h-full cursor-pointer select-none items-center justify-between overflow-hidden rounded-md bg-neutral-focus/60 transition-colors duration-300 hover:bg-neutral-focus/90">
+    <div
+      className={`${className} flex h-full cursor-pointer select-none items-center justify-between overflow-hidden rounded-md bg-neutral-focus/60 transition-colors duration-300 hover:bg-neutral-focus/90`}
+    >
       <div className="flex items-center space-x-4">
         <div className="relative h-20 w-20 ">
           <Image src={image} layout="fill" objectFit="fill" alt="gon" />
         </div>
-        <p className="w-16 truncate md:w-24  xl:w-32 ">{text}</p>
+        <p className="w-64 truncate sm:w-16 md:w-24  xl:w-32 ">{text}</p>
       </div>
       <div className="mr-6 hidden h-12 w-12 cursor-default rounded-full bg-primary p-2 shadow-md transition-all hover:scale-105 md:inline-flex">
         {isPaused ? (

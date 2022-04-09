@@ -4,6 +4,13 @@ import useSWR from "swr"
 
 const fetcher = (url: string) => axios.get(url).then((r) => r.data)
 
-export const useQuery = <T>(url: string) => {
-  return useSWR<T>(url, fetcher)
+export const useQuery = <T>(
+  url: string,
+  refreshInterval?: number,
+  revalidateOnFocus?: boolean
+) => {
+  return useSWR<T>(url, fetcher, {
+    refreshInterval: refreshInterval ?? 0,
+    revalidateOnFocus: revalidateOnFocus ?? true,
+  })
 }

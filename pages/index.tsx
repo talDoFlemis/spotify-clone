@@ -15,7 +15,10 @@ const Home = () => {
   return (
     <main className="flex w-full flex-col">
       <div className="w-full bg-gradient-to-b from-[#c25a7d98] to-spotifyBlack">
-        <Navbar username={session?.user.username} />
+        <Navbar
+          username={session?.user.username}
+          userimage={session?.user.image}
+        />
         <MostRecentPlayed />
       </div>
       <YourShows />

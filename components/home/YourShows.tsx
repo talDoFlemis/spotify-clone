@@ -6,7 +6,11 @@ import { useQuery } from "hooks/useQuery"
 import LoadingComponent from "@components/layouts/LoadingComponent"
 
 function YourShows() {
-  const { data: shows, error } = useQuery<ShowsData[]>("/api/getShows")
+  const { data: shows, error } = useQuery<ShowsData[]>(
+    "/api/getShows",
+    undefined,
+    false
+  )
 
   return (
     <div className="p-8 text-white ">
@@ -17,6 +21,7 @@ function YourShows() {
         ) : (
           shows?.map((show, index) => (
             <CardYourShows
+              id={show.show.id}
               text={show.show.name}
               key={show.show.id}
               publisher={show.show.publisher}

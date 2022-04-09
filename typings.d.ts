@@ -1,3 +1,4 @@
+import { CurrentSongInfo } from "typings"
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { JWT } from "next-auth/jwt"
 import NextAuth, { DefaultSession } from "next-auth"
@@ -165,7 +166,35 @@ export interface ShowsData {
       url: string
       width: number
     }[]
-
+    episodes: {
+      total: number
+      items: {
+        audio_preview_url: string
+        description: string
+        duration_ms: number
+        explicit: boolean
+        external_urls: {
+          spotify: string
+        }
+        href: string
+        html_description: string
+        id: string
+        images: {
+          height: number
+          url: string
+          width: number
+        }[]
+        is_externally_hosted: boolean
+        is_playable: boolean
+        language: string
+        languages: string
+        name: string
+        release_date: string
+        release_date_precision: string
+        type: string
+        uri: string
+      }[]
+    }
     is_externally_hosted: boolean
     languages: string[]
     media_type: string
@@ -485,6 +514,12 @@ export interface PlayerStatus {
     id: string
     is_local: boolean
     name: string
+    show: ShowsData["show"]
+    images: {
+      height: number
+      url: string
+      width: number
+    }[]
     popularity: number
     preview_url: string
     track_number: number
@@ -498,4 +533,118 @@ export interface PlayerStatus {
     }
   }
   is_playing: boolean
+}
+
+export interface EpisodeData {
+  audio_preview_url: string
+  description: string
+  duration_ms: number
+  explicit: boolean
+  external_urls: {
+    spotify: string
+  }
+  href: string
+  html_description: string
+  id: string
+  images: {
+    height: number
+    url: string
+    width: number
+  }[]
+
+  is_externally_hosted: boolean
+  is_playable: boolean
+  language: string
+  languages: string
+  name: string
+  release_date: string
+  release_date_precision: string
+  show: {
+    copyrights: []
+    description: string
+    explicit: boolean
+    external_urls: {
+      spotify: string
+    }
+    href: string
+    html_description: string
+    id: string
+    images: {
+      height: number
+      url: string
+      width: number
+    }[]
+    is_externally_hosted: boolean
+    languages: string[]
+    media_type: string
+    name: string
+    publisher: string
+    total_episodes: number
+    type: string
+    uri: string
+  }
+  type: string
+  uri: string
+}
+
+export interface AlbumsData {
+  album_group: string
+  album_type: string
+  artists: {
+    external_urls: {
+      spotify: string
+    }
+    href: string
+    id: string
+    name: string
+    type: string
+    uri: string
+  }[]
+  external_urls: {
+    spotify: string
+  }
+  href: string
+  id: string
+  images: {
+    height: number
+    url: string
+    width: number
+  }[]
+  tracks: { total: number; items: CurrentSongInfo["item"][] }
+  name: string
+  release_date: string
+  release_date_precision: string
+  total_tracks: number
+  type: string
+  uri: string
+}
+
+export interface userGithubData {
+  name: string
+  login: string
+  avatarUrl: string
+  url: string
+  bio: string
+  email: string
+  repositories: {
+    nodes: {
+      id: string
+      name: string
+      stargazerCount: number
+      updatedAt: string
+      url: string
+      homepageUrl: string
+      languages: {
+        totalSize: number
+        edges: {
+          size: number
+          node: {
+            color: string
+            id: string
+            name: string
+          }
+        }[]
+      }
+    }[]
+  }
 }

@@ -1,13 +1,13 @@
 import Navbar from "@components/home/Navbar"
 import HomeLayout from "@components/layouts/HomeLayout"
 import LoadingComponent from "@components/layouts/LoadingComponent"
-import Songs from "@components/playlists/Songs"
+import SongsLink from "@components/layouts/SongsLink"
 import { useQuery } from "hooks/useQuery"
 import { useSession } from "next-auth/react"
 import Image from "next/image"
 import { useRouter } from "next/router"
 import React from "react"
-import { PlaylistData } from "typings"
+import { PlayerStatus, PlaylistData } from "typings"
 import { millisHoursAndMinutesAndSeconds } from "lib/time"
 import { useColor } from "color-thief-react"
 
@@ -18,6 +18,7 @@ function PlaylistDetails() {
   const { data: playlist, error } = useQuery<PlaylistData>(
     `/api/playlists/${router.query.id}`
   )
+
   const { data } = useColor(playlist?.images[0].url as string, "hex", {
     crossOrigin: "anonymous",
   })
@@ -44,7 +45,10 @@ function PlaylistDetails() {
           backgroundImage: `linear-gradient(to top, #121212,   ${color})`,
         }}
       >
-        <Navbar username={session?.user.username} />
+        <Navbar
+          username={session?.user.username}
+          userimage={session?.user.image}
+        />
         <div className="flex items-end space-x-6 overflow-hidden text-ellipsis p-8">
           <div className="relative h-60 w-60 flex-shrink-0 shadow-lg">
             <Image
@@ -68,7 +72,10 @@ function PlaylistDetails() {
       </div>
       <div className="p-8">
         {playlist?.tracks.items.map((track, index) => (
-          <Songs
+          <SongsLink
+            artistId={track.track.artists[0].id}
+            albumId={track.track.album.id}
+            songId={track.track.id}
             key={track.track.id}
             index={index}
             name={track.track.name}

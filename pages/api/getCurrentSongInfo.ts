@@ -28,7 +28,9 @@ export default async function handler(
         )
 
         const currentSongInfo = await getCurrentSongInfo.data
-
+        if (currentSongInfo === "") {
+          return res.status(204)
+        }
         res.status(200).json(currentSongInfo)
       } catch (error) {
         res.status(400).json("Failed to fetch songInfo")

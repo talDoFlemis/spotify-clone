@@ -6,8 +6,11 @@ import { useQuery } from "hooks/useQuery"
 import LoadingComponent from "@components/layouts/LoadingComponent"
 
 function TopArtists() {
-  const { data: topArtists, error } =
-    useQuery<TopArtistsData[]>("/api/getTopArtists")
+  const { data: topArtists, error } = useQuery<TopArtistsData[]>(
+    "/api/getTopArtists",
+    undefined,
+    false
+  )
 
   return (
     <div className=" p-8 text-white">
@@ -18,6 +21,7 @@ function TopArtists() {
         ) : (
           topArtists?.map((artist, index) => (
             <CardTopArtists
+              id={artist.id}
               artistName={artist.name}
               artistGenres={artist.genres
                 .slice(0, 3)
