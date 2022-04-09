@@ -53,12 +53,13 @@ function ModalNotImplemented({ text, isModalVisible, setModalVisible }: Props) {
                 </Dialog.Title>
                 <div className="mt-2">
                   <p className="text-sm text-gray-500">{text}</p>
-                  <div className="relative mx-auto mt-4 h-[20vh] w-[20vw]">
+
+                  <div className="relative mx-auto h-64 w-64">
                     <Image
-                      src="/yui_working.gif"
+                      src="https://c.tenor.com/i9Jb7TEwVqkAAAAi/hunter-x-hunter-hxh.gif"
                       layout="fill"
                       objectFit="contain"
-                      alt="yui-working"
+                      alt="gon"
                     />
                   </div>
                 </div>

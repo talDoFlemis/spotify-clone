@@ -19,6 +19,7 @@ module.exports = {
       "thisis-images.scdn.co",
       "cdn.jsdelivr.net",
       "raw.githubusercontent.com",
+      "c.tenor.com",
     ],
   },
 }

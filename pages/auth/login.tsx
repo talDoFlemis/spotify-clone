@@ -1,5 +1,6 @@
 import ModalNotImplemented from "@components/layouts/ModalNotImplemented"
 import { signIn } from "next-auth/react"
+import Head from "next/head"
 import React, { useState } from "react"
 import { BsSpotify } from "react-icons/bs"
 
@@ -7,6 +8,9 @@ function Login() {
   const [isModalVisible, setModalVisible] = useState(false)
   return (
     <div className="flex h-screen flex-col items-center justify-center space-y-4 bg-spotifyBlack">
+      <Head>
+        <title>Spotify Clone</title>
+      </Head>
       <ModalNotImplemented
         text="Due to limited time, and just one guy working on the project, this functionality was not made yet"
         isModalVisible={isModalVisible}
