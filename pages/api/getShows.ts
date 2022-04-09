@@ -18,7 +18,7 @@ export default async function handler(
   switch (method) {
     case "GET":
       try {
-        const getPlaylists = await axios.get(
+        const getShows = await axios.get(
           "https://api.spotify.com/v1/me/shows",
           {
             headers: {
@@ -27,11 +27,11 @@ export default async function handler(
           }
         )
 
-        const playlists = await getPlaylists.data.items
+        const shows = await getShows.data.items
 
-        res.status(200).json(playlists)
+        res.status(200).json(shows)
       } catch (error) {
-        res.status(400).json("Failed to fetch playlists")
+        res.status(400).json("Failed to fetch SHows")
       }
       break
   }

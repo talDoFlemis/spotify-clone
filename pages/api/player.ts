@@ -41,23 +41,5 @@ export default async function handler(
         res.status(400).json(error)
       }
       break
-    case "PUT":
-      try {
-        const update = await axios.put(
-          "https://api.spotify.com/v1/me/player/shuffle",
-          null,
-          {
-            headers: {
-              Authorization: "Bearer " + accessToken,
-            },
-          }
-        )
-        console.log(update.data)
-        res.status(200).json(req.body)
-      } catch (error) {
-        const errorHandling = error.response.data.error
-        console.log(errorHandling)
-        res.status(errorHandling.status).send(errorHandling.message || error)
-      }
   }
 }

@@ -31,7 +31,7 @@ export default async function handler(
 
         res.status(200).json(artistAlbums)
       } catch (error) {
-        console.log(error.response.data)
+        console.log(error)
         res.status(400).json("Failed to fetch playlists")
       }
       break

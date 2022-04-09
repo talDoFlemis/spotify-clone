@@ -18,7 +18,7 @@ export default async function handler(
   switch (method) {
     case "GET":
       try {
-        const getPlaylists = await axios.get(
+        const getRecentlyPlayed = await axios.get(
           "https://api.spotify.com/v1/me/player/recently-played",
           {
             headers: {
@@ -27,11 +27,11 @@ export default async function handler(
           }
         )
 
-        const playlists = await getPlaylists.data.items.slice(0, 6)
+        const recentlyPlayed = await getRecentlyPlayed.data.items.slice(0, 6)
 
-        res.status(200).json(playlists)
+        res.status(200).json(recentlyPlayed)
       } catch (error) {
-        res.status(400).json("Failed to fetch playlists")
+        res.status(400).json("Failed to fetch RecentlyPlayedData")
       }
       break
   }
